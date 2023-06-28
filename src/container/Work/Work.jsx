@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
@@ -24,7 +24,7 @@ const Work = () => {
       } else {
         setFilterWork(works.filter((work) => work.tags.includes(item)));
       }
-    }, 500);
+    }, 700);
   };
 
   useEffect(() => {
@@ -63,9 +63,18 @@ const Work = () => {
         className="app__work-portfolio"
       >
         {filterWork.map((work, index) => (
-          <div className="app__work-item app__flex" key={index}>
+          <div className="app__work-item app__flex" key={work._id}>
             <div className="app__work-img app__flex">
-              <img src={urlFor(work.imgUrl)} alt={work.name} />
+              <AnimatePresence>
+                <motion.img
+                  src={urlFor(work.imgUrl)}
+                  alt={work.name}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.7}}
+                />
+              </AnimatePresence>
               <motion.div
                 whileHover={{ opacity: [0, 1] }}
                 transition={{
