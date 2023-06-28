@@ -35,6 +35,8 @@ import nb from '../assets/nb.png';
 import skype from '../assets/skype.png';
 import spotify from '../assets/spotify.png';
 
+import brandonlevylogo from "../assets/brandonlevylogo.png"
+
 const exports = {
   email,
   mobile,
@@ -69,6 +71,7 @@ const exports = {
   nb,
   skype,
   spotify,
+  brandonlevylogo
 }
 
 export default exports;
